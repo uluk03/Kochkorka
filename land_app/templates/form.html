@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета земли</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        }
+
+        .form-header {
+            text-align: center;
+            padding: 40px 40px 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        }
+
+        .form-header h2 {
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .form-header p {
+            color: #718096;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .icon-header {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .icon-header i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .form-body {
+            padding: 20px 40px 40px;
+        }
+
+        .form-floating {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
+        }
+
+        .form-label {
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .input-icon {
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        /* Анимация появления */
+        .form-card {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 576px) {
+            .form-body, .form-header {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .form-header h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="form-card">
+        <div class="form-header">
+            <div class="icon-header">
+                <i class="fas fa-seedling"></i>
+            </div>
+            <h2>Жер жонундо маалымат</h2>
+            <p>Чоп чапканга керек</p>
+        </div>
+
+        <div class="form-body">
+            <form action="/submit" method="post">
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-user input-icon"></i>
+                        Аты жонунуз
+                    </label>
+                    <input type="text" name="name" class="form-control" placeholder="Атынызды жазыныз" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-map-marker-alt input-icon"></i>
+                        Жериниздин аты
+                    </label>
+                    <input type="text" name="land_name" class="form-control" placeholder="Жердин атын жызыныз" required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">
+                        <i class="fas fa-ruler-combined input-icon"></i>
+                        Канча гектар
+                    </label>
+                    <input type="number" step="0.1" name="hectares" class="form-control" placeholder="0.0" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">
+                    <i class="fas fa-paper-plane me-2"></i>
+                    Кетируу
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

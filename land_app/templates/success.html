@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Спасибо</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+
+        .success-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #34d399, #6ee7b7, #a7f3d0);
+        }
+
+        .success-header {
+            padding: 50px 40px 30px;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+            animation: pulse-success 2s infinite;
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        @keyframes pulse-success {
+            0% {
+                box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5);
+                transform: scale(1.05);
+            }
+            100% {
+                box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+            }
+        }
+
+        .success-title {
+            color: #1f2937;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .success-subtitle {
+            color: #6b7280;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .price-display {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 40px;
+            border: 2px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .price-label {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .price-value {
+            color: #059669;
+            font-size: 2.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .currency-icon {
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            padding: 20px 40px 50px;
+        }
+
+        .btn-new-form {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-new-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-new-form:active {
+            transform: translateY(0);
+        }
+
+        .decorative-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Анимация появления */
+        .success-card {
+            animation: slideInScale 0.8s ease-out;
+        }
+
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Конфетти эффект */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 576px) {
+            .success-header {
+                padding: 40px 25px 25px;
+            }
+
+            .price-display {
+                margin: 20px 25px;
+                padding: 25px;
+            }
+
+            .action-buttons {
+                padding: 15px 25px 40px;
+            }
+
+            .success-title {
+                font-size: 2rem;
+            }
+
+            .price-value {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="success-card">
+        <!-- Декоративные элементы -->
+        <div class="decorative-elements">
+            <div class="floating-shape shape-1">
+                <i class="fas fa-leaf" style="font-size: 2rem; color: #10b981;"></i>
+            </div>
+            <div class="floating-shape shape-2">
+                <i class="fas fa-seedling" style="font-size: 1.5rem; color: #34d399;"></i>
+            </div>
+            <div class="floating-shape shape-3">
+                <i class="fas fa-tree" style="font-size: 2.5rem; color: #059669;"></i>
+            </div>
+        </div>
+
+        <div class="success-header">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 class="success-title">Рахмат, {{ name }}!</h2>
+            <p class="success-subtitle">Сиздин жер жонундо маалымат киргизилди</p>
+        </div>
+
+        <div class="price-display">
+            <div class="price-label">Чоп чапкандын баасы</div>
+            <div class="price-value">
+                <i class="fas fa-coins currency-icon"></i>
+                <span>{{ price }} сом</span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/" class="btn-new-form">
+                <i class="fas fa-plus"></i>
+                Даагы жер кошуу
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Конфетти эффект -->
+<div class="confetti" id="confetti"></div>
+
+<script>
+    // Создание конфетти эффекта
+    function createConfetti() {
+        const confettiContainer = document.getElementById('confetti');
+        const colors = ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#667eea', '#764ba2'];
+
+        for (let i = 0; i < 50; i++) {
+            const confettiPiece = document.createElement('div');
+            confettiPiece.className = 'confetti-piece';
+            confettiPiece.style.left = Math.random() * 100 + '%';
+            confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confettiPiece.style.animationDelay = Math.random() * 3 + 's';
+            confettiPiece.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confettiContainer.appendChild(confettiPiece);
+        }
+
+        // Удаление конфетти через 5 секунд
+        setTimeout(() => {
+            confettiContainer.innerHTML = '';
+        }, 5000);
+    }
+
+    // Запуск конфетти при загрузке страницы
+    window.addEventListener('load', createConfetti);
+</script>
+
+</body>
+</html>
