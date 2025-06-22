@@ -44,6 +44,7 @@ def submit():
     # Сохраняем в БД
     conn = sqlite3.connect("lands.db")
     cur = conn.cursor()
+
     cur.execute("""
         CREATE TABLE IF NOT EXISTS lands (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -185,4 +186,5 @@ def create_test_data():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
