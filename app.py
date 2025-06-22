@@ -42,7 +42,7 @@ def submit():
     total_price = hectares * price_per_hectare
 
     # Сохраняем в БД
-    conn = sqlite3.connect("lands.db")
+    conn = sqlite3.connect("land_app/lands.db")
     cur = conn.cursor()
 
     cur.execute("""
@@ -89,7 +89,7 @@ def admin_logout():
 @app.route("/admin")
 @login_required
 def admin_dashboard():
-    conn = sqlite3.connect("lands.db")
+    conn = sqlite3.connect("land_app/lands.db")
     cur = conn.cursor()
 
     # Убеждаемся что таблица существует
@@ -138,7 +138,7 @@ def admin_dashboard():
 @app.route("/admin/delete/<int:land_id>", methods=["POST"])
 @login_required
 def delete_land(land_id):
-    conn = sqlite3.connect("lands.db")
+    conn = sqlite3.connect("land_app/lands.db")
     cur = conn.cursor()
     cur.execute("DELETE FROM lands WHERE id = ?", (land_id,))
     conn.commit()
@@ -152,7 +152,7 @@ def delete_land(land_id):
 @app.route("/admin/test-data")
 @login_required
 def create_test_data():
-    conn = sqlite3.connect("lands.db")
+    conn = sqlite3.connect("land_app/lands.db")
     cur = conn.cursor()
 
     # Создаем таблицу если её нет
